@@ -1,16 +1,16 @@
-// backend/db.js
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import mongoose from "mongoose";
+import dotenv from "dotenv";
+
 dotenv.config();
 
-const uri = process.env.MONGO_URI;
-if (!uri) throw new Error('mongodb+srv://jaider:contraseña@caballerosdelzodiaco.ievicxy.mongodb.net/?appName=caballerosdelzodiaco');
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("✅ Conectado a MongoDB Atlas");
+  } catch (error) {
+    console.error("❌ Error de conexión a MongoDB:", error.message);
+    process.exit(1);
+  }
+};
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('✅ Conectado a MongoDB Atlas'))
-  .catch(err => { console.error('❌ Error DB:', err); process.exit(1); });
-
- 
-  //contraseña mongodb = contraseña
-  // usuario mongodb = jaider
-  //conexion SRV = mongodb+srv://jaider:contraseña@caballerosdelzodiaco.ievicxy.mongodb.net/?appName=caballerosdelzodiaco
+export default connectDB;
