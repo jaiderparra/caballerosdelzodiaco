@@ -1,3 +1,4 @@
+// backend/db.js
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
@@ -13,4 +14,6 @@ const connectDB = async () => {
   }
 };
 
-export default connectDB;
+connectDB();
+
+export default mongoose;
