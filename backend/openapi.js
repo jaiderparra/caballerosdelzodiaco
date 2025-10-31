@@ -14,5 +14,5 @@ export const swaggerOptions = {
       }
     ]
   },
-  apis: ["./routes/*.js", "./models/*.js"]
+  apis: ['./backend/routes/*.js', './backend/models/*.js'] // Rutas donde buscar las anotaciones Swagger
 };
